@@ -56,19 +56,22 @@ Key columns include:
 
 ## Visualizations
 
-The project generates several visualizations saved in the `visuals/` folder:
+The project generates several visualizations saved in the `visuals/` folder.
 
-* Monthly Revenue Trend
-  visuals/monthly_revenue.png
-* Top Countries by Revenue
-  visuals/top_countries.png
-* Elbow Method for Clustering
-  visuals/elbow_method.png
-* Customer Segments Scatter Plot
-  visuals/customer_segments.png
-* Feature Importance Chart
-  visuals/feature_importance.png
+### Monthly Revenue Trend
+![Monthly Revenue](visuals/monthly_revenue.png)
 
+### Top Countries by Revenue
+![Top Countries](visuals/top_countries.png)
+
+### Elbow Method for Clustering
+![Elbow Method](visuals/elbow_method.png)
+
+### Customer Segments Scatter Plot
+![Customer Segments](visuals/customer_segments.png)
+
+### Feature Importance Chart
+![Feature Importance](visuals/feature_importance.png)
 ---
 
 ## Key Insights
