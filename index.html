@@ -1,1 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Customer Segmentation & Spend Analysis</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
 
+  <div class="background-glow glow-1"></div>
+  <div class="background-glow glow-2"></div>
+
+  <header class="hero">
+    <div class="hero-content">
+      <span class="tag">Data Science Project</span>
+      <h1>Customer Segmentation & Spend Analysis</h1>
+      <p class="hero-text">
+        An advanced customer analytics project using RFM analysis, K-Means clustering,
+        spend estimation, and business-focused visual storytelling on e-commerce data.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#overview" class="btn primary">Explore Project</a>
+        <a href="https://github.com/bindhusaahithi/Customer-Segmentation-Customer-Lifetime-Value-Prediction" class="btn secondary" target="_blank">
+          View GitHub Repo
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section id="overview" class="card">
+      <h2>Project Overview</h2>
+      <p>
+        This project analyzes customer purchasing behavior using the Online Retail dataset.
+        The workflow includes data cleaning, RFM feature engineering, outlier handling,
+        K-Means clustering, and a machine learning model to estimate customer spending behavior.
+      </p>
+
+      <div class="stats-grid">
+        <div class="stat-box">
+          <h3>Dataset</h3>
+          <p>Online Retail (UCI)</p>
+        </div>
+        <div class="stat-box">
+          <h3>Tech Stack</h3>
+          <p>Python, Pandas, Scikit-learn</p>
+        </div>
+        <div class="stat-box">
+          <h3>Core Method</h3>
+          <p>RFM + K-Means</p>
+        </div>
+        <div class="stat-box">
+          <h3>Model</h3>
+          <p>Random Forest</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Workflow</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <span>1</span>
+          <div>
+            <h3>Data Cleaning</h3>
+            <p>Removed cancelled transactions, missing customer IDs, and invalid quantity/price records.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <span>2</span>
+          <div>
+            <h3>Feature Engineering</h3>
+            <p>Created total price and RFM features: Recency, Frequency, and Monetary.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <span>3</span>
+          <div>
+            <h3>Segmentation</h3>
+            <p>Used K-Means clustering to group customers by purchasing behavior.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <span>4</span>
+          <div>
+            <h3>Spend Modeling</h3>
+            <p>Built a Random Forest model to estimate customer spending patterns.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Project Visualizations</h2>
+
+      <div class="visual-grid">
+        <div class="visual-card">
+          <img src="visuals/monthly_revenue.png" alt="Monthly Revenue Trend">
+          <h3>Monthly Revenue Trend</h3>
+          <p>Shows revenue changes over time and highlights overall growth patterns.</p>
+        </div>
+
+        <div class="visual-card">
+          <img src="visuals/top_countries.png" alt="Top Countries by Revenue">
+          <h3>Top Countries by Revenue</h3>
+          <p>Highlights key countries contributing the highest revenue.</p>
+        </div>
+
+        <div class="visual-card">
+          <img src="visuals/elbow_method.png" alt="Elbow Method">
+          <h3>Elbow Method</h3>
+          <p>Used to guide the selection of the number of clusters for segmentation.</p>
+        </div>
+
+        <div class="visual-card">
+          <img src="visuals/customer_segments.png" alt="Customer Segments">
+          <h3>Customer Segments</h3>
+          <p>Displays K-Means customer groups based on purchase frequency and spending.</p>
+        </div>
+
+        <div class="visual-card">
+          <img src="visuals/feature_importance.png" alt="Feature Importance">
+          <h3>Feature Importance</h3>
+          <p>Shows that Frequency is the stronger predictor of spending behavior.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Key Insights</h2>
+      <div class="insights-grid">
+        <div class="insight-box">
+          <h3>High-Value Segment</h3>
+          <p>A relatively small customer group contributes a major share of total revenue.</p>
+        </div>
+
+        <div class="insight-box">
+          <h3>Frequency Matters Most</h3>
+          <p>Purchase frequency is more important than recency in estimating spend behavior.</p>
+        </div>
+
+        <div class="insight-box">
+          <h3>Business Value</h3>
+          <p>The analysis can support targeted marketing, retention strategy, and segmentation decisions.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card tech-section">
+      <h2>Tools Used</h2>
+      <div class="tech-stack">
+        <span>Python</span>
+        <span>Pandas</span>
+        <span>NumPy</span>
+        <span>Matplotlib</span>
+        <span>Seaborn</span>
+        <span>Scikit-learn</span>
+        <span>Jupyter Notebook</span>
+      </div>
+    </section>
+
+    <section class="card final-cta">
+      <h2>Project Repository</h2>
+      <p>
+        Explore the notebook, visuals, and full project files on GitHub.
+      </p>
+      <a href="https://github.com/bindhusaahithi/Customer-Segmentation-Customer-Lifetime-Value-Prediction" class="btn primary" target="_blank">
+        Open GitHub Repository
+      </a>
+    </section>
+
+  </main>
+
+</body>
+</html>
