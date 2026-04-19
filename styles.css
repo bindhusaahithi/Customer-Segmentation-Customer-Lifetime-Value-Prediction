@@ -646,6 +646,16 @@ figcaption {
   margin: 0;
 }
 
+.footer strong {
+  color: var(--paper);
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
 .footer a {
   color: var(--gold);
   font-weight: 900;
