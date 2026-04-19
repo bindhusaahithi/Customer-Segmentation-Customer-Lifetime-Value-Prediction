@@ -123,6 +123,19 @@ jupyter notebook notebooks/customer_segmentation.ipynb
 
 ---
 
+## GitHub Pages Portfolio
+
+This repository includes a static portfolio page for GitHub Pages:
+
+```
+index.html
+styles.css
+```
+
+To publish it, go to the repository settings on GitHub, open **Pages**, and set the source to the `main` branch with the root folder.
+
+---
+
 ## Tools Used
 
 * Python

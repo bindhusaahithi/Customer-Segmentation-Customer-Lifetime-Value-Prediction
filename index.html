@@ -3,179 +3,216 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Customer Segmentation & Spend Analysis</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta
+    name="description"
+    content="A polished portfolio case study for customer segmentation and spend analysis using RFM, K-Means clustering, and Random Forest modeling."
+  />
+  <title>Customer Segmentation Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
 
-  <div class="background-glow glow-1"></div>
-  <div class="background-glow glow-2"></div>
-
-  <header class="hero">
-    <div class="hero-content">
-      <span class="tag">Data Science Project</span>
-      <h1>Customer Segmentation & Spend Analysis</h1>
-      <p class="hero-text">
-        An advanced customer analytics project using RFM analysis, K-Means clustering,
-        spend estimation, and business-focused visual storytelling on e-commerce data.
-      </p>
-
-      <div class="hero-buttons">
-        <a href="#overview" class="btn primary">Explore Project</a>
-        <a href="https://github.com/bindhusaahithi/Customer-Segmentation-Customer-Lifetime-Value-Prediction" class="btn secondary" target="_blank">
-          View GitHub Repo
-        </a>
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="#top">
+        <span class="brand-mark">CS</span>
+        <span>Customer Segmentation</span>
+      </a>
+      <div class="nav-links">
+        <a href="#overview">Overview</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#segments">Segments</a>
+        <a href="#visuals">Visuals</a>
+        <a href="#impact">Impact</a>
       </div>
-    </div>
+    </nav>
   </header>
 
-  <main class="container">
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">Portfolio Case Study · Retail Analytics</p>
+        <h1>Turning customer transactions into targeted growth strategy.</h1>
+        <p class="hero-text">
+          I analyzed an online retail dataset using RFM analysis, K-Means clustering, and
+          Random Forest modeling to identify high-value customer groups and explain spending
+          behavior.
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="notebooks/customer_segmentation.ipynb">Explore Notebook</a>
+          <a class="button button-ghost" href="README.md">View README</a>
+        </div>
+      </div>
 
-    <section id="overview" class="card">
-      <h2>Project Overview</h2>
-      <p>
-        This project analyzes customer purchasing behavior using the Online Retail dataset.
-        The workflow includes data cleaning, RFM feature engineering, outlier handling,
-        K-Means clustering, and a machine learning model to estimate customer spending behavior.
-      </p>
-
-      <div class="stats-grid">
-        <div class="stat-box">
-          <h3>Dataset</h3>
-          <p>Online Retail (UCI)</p>
+      <div class="hero-panel reveal delay-one" aria-label="Project dashboard preview">
+        <div class="panel-topline">
+          <span>Live Project Snapshot</span>
+          <span class="status-pill">GitHub Pages</span>
         </div>
-        <div class="stat-box">
-          <h3>Tech Stack</h3>
-          <p>Python, Pandas, Scikit-learn</p>
+        <div class="hero-chart">
+          <img src="visuals/customer_segments.png" alt="Customer segments scatter plot" />
         </div>
-        <div class="stat-box">
-          <h3>Core Method</h3>
-          <p>RFM + K-Means</p>
-        </div>
-        <div class="stat-box">
-          <h3>Model</h3>
-          <p>Random Forest</p>
+        <div class="metric-stack">
+          <article>
+            <span>Transactions</span>
+            <strong>18,532</strong>
+          </article>
+          <article>
+            <span>Customers</span>
+            <strong>4,338</strong>
+          </article>
+          <article>
+            <span>Segments</span>
+            <strong>4</strong>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="card">
-      <h2>Workflow</h2>
+    <section id="overview" class="overview section reveal">
+      <div class="section-kicker">
+        <p class="eyebrow">Project Overview</p>
+        <h2>Built for decisions, not just charts.</h2>
+      </div>
+      <div class="overview-card">
+        <p>
+          The project segments customers based on recency, purchase frequency, and monetary
+          value, then models current spending behavior. The result is a business-ready view of
+          which customers are loyal, which are growing, and which may need re-engagement.
+        </p>
+        <div class="mini-facts">
+          <span>Dataset: UCI Online Retail</span>
+          <span>Period: 2010-2011</span>
+          <span>Method: RFM + K-Means</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="workflow" class="section workflow">
+      <div class="section-kicker reveal">
+        <p class="eyebrow">Methodology</p>
+        <h2>A clean analytics pipeline from transaction rows to customer groups.</h2>
+      </div>
       <div class="timeline">
-        <div class="timeline-item">
-          <span>1</span>
-          <div>
-            <h3>Data Cleaning</h3>
-            <p>Removed cancelled transactions, missing customer IDs, and invalid quantity/price records.</p>
-          </div>
-        </div>
+        <article class="reveal">
+          <span>01</span>
+          <h3>Cleaned raw transactions</h3>
+          <p>Removed missing customer IDs, canceled orders, negative quantities, and invalid prices.</p>
+        </article>
+        <article class="reveal delay-one">
+          <span>02</span>
+          <h3>Created RFM features</h3>
+          <p>Calculated recency, unique-invoice frequency, and total monetary value for each customer.</p>
+        </article>
+        <article class="reveal delay-two">
+          <span>03</span>
+          <h3>Clustered customers</h3>
+          <p>Standardized RFM metrics, handled top monetary outliers, and selected four interpretable groups.</p>
+        </article>
+        <article class="reveal delay-three">
+          <span>04</span>
+          <h3>Modeled spend behavior</h3>
+          <p>Used Random Forest regression to estimate customer spend from recency and frequency.</p>
+        </article>
+      </div>
+    </section>
 
-        <div class="timeline-item">
-          <span>2</span>
-          <div>
-            <h3>Feature Engineering</h3>
-            <p>Created total price and RFM features: Recency, Frequency, and Monetary.</p>
-          </div>
-        </div>
+    <section id="segments" class="section segments">
+      <div class="section-kicker reveal">
+        <p class="eyebrow">Segmentation Results</p>
+        <h2>Four customer groups with clear strategic actions.</h2>
+      </div>
+      <div class="segment-layout">
+        <article class="segment-card vip reveal">
+          <p>Cluster 1</p>
+          <h3>Highest-Value Loyal Customers</h3>
+          <strong>141 customers</strong>
+          <span>Avg frequency 21.45 · Avg spend 9,815.22</span>
+        </article>
+        <article class="segment-card reveal delay-one">
+          <p>Cluster 2</p>
+          <h3>Strong Repeat Customers</h3>
+          <strong>714 customers</strong>
+          <span>Avg frequency 8.43 · Avg spend 3,330.25</span>
+        </article>
+        <article class="segment-card reveal delay-two">
+          <p>Cluster 3</p>
+          <h3>Moderate Regular Customers</h3>
+          <strong>2,416 customers</strong>
+          <span>Avg frequency 2.50 · Avg spend 767.38</span>
+        </article>
+        <article class="segment-card reveal delay-three">
+          <p>Cluster 0</p>
+          <h3>Inactive Low-Value Customers</h3>
+          <strong>1,023 customers</strong>
+          <span>Avg recency 251.96 days · Avg spend 434.13</span>
+        </article>
+      </div>
 
-        <div class="timeline-item">
-          <span>3</span>
-          <div>
-            <h3>Segmentation</h3>
-            <p>Used K-Means clustering to group customers by purchasing behavior.</p>
-          </div>
+      <div class="model-strip reveal">
+        <div>
+          <span>Model Score</span>
+          <strong>R² 0.4595</strong>
+          <p>Random Forest model for current customer spend estimation.</p>
         </div>
-
-        <div class="timeline-item">
-          <span>4</span>
-          <div>
-            <h3>Spend Modeling</h3>
-            <p>Built a Random Forest model to estimate customer spending patterns.</p>
-          </div>
+        <div>
+          <span>Strongest Driver</span>
+          <strong>Frequency</strong>
+          <p>78.16% relative importance, making repeat purchase behavior the strongest signal.</p>
         </div>
       </div>
     </section>
 
-    <section class="card">
-      <h2>Project Visualizations</h2>
-
-      <div class="visual-grid">
-        <div class="visual-card">
-          <img src="visuals/monthly_revenue.png" alt="Monthly Revenue Trend">
-          <h3>Monthly Revenue Trend</h3>
-          <p>Shows revenue changes over time and highlights overall growth patterns.</p>
-        </div>
-
-        <div class="visual-card">
-          <img src="visuals/top_countries.png" alt="Top Countries by Revenue">
-          <h3>Top Countries by Revenue</h3>
-          <p>Highlights key countries contributing the highest revenue.</p>
-        </div>
-
-        <div class="visual-card">
-          <img src="visuals/elbow_method.png" alt="Elbow Method">
-          <h3>Elbow Method</h3>
-          <p>Used to guide the selection of the number of clusters for segmentation.</p>
-        </div>
-
-        <div class="visual-card">
-          <img src="visuals/customer_segments.png" alt="Customer Segments">
-          <h3>Customer Segments</h3>
-          <p>Displays K-Means customer groups based on purchase frequency and spending.</p>
-        </div>
-
-        <div class="visual-card">
-          <img src="visuals/feature_importance.png" alt="Feature Importance">
-          <h3>Feature Importance</h3>
-          <p>Shows that Frequency is the stronger predictor of spending behavior.</p>
-        </div>
+    <section id="visuals" class="section visuals">
+      <div class="section-kicker reveal">
+        <p class="eyebrow">Visual Story</p>
+        <h2>Presentation-ready charts exported from the notebook.</h2>
+      </div>
+      <div class="visual-mosaic">
+        <figure class="wide reveal">
+          <img src="visuals/monthly_revenue.png" alt="Monthly revenue trend chart" />
+          <figcaption>Monthly Revenue Trend</figcaption>
+        </figure>
+        <figure class="reveal delay-one">
+          <img src="visuals/top_countries.png" alt="Top countries by revenue chart" />
+          <figcaption>Top Countries by Revenue</figcaption>
+        </figure>
+        <figure class="reveal delay-two">
+          <img src="visuals/elbow_method.png" alt="Elbow method chart" />
+          <figcaption>Cluster Selection</figcaption>
+        </figure>
+        <figure class="wide reveal">
+          <img src="visuals/feature_importance.png" alt="Feature importance chart" />
+          <figcaption>Model Feature Importance</figcaption>
+        </figure>
       </div>
     </section>
 
-    <section class="card">
-      <h2>Key Insights</h2>
-      <div class="insights-grid">
-        <div class="insight-box">
-          <h3>High-Value Segment</h3>
-          <p>A relatively small customer group contributes a major share of total revenue.</p>
-        </div>
-
-        <div class="insight-box">
-          <h3>Frequency Matters Most</h3>
-          <p>Purchase frequency is more important than recency in estimating spend behavior.</p>
-        </div>
-
-        <div class="insight-box">
-          <h3>Business Value</h3>
-          <p>The analysis can support targeted marketing, retention strategy, and segmentation decisions.</p>
-        </div>
+    <section id="impact" class="section impact reveal">
+      <div>
+        <p class="eyebrow">Business Impact</p>
+        <h2>How a business could use this work.</h2>
+      </div>
+      <div class="impact-grid">
+        <p>Reward VIP customers with loyalty campaigns and personalized offers.</p>
+        <p>Use win-back campaigns for inactive, low-frequency customers.</p>
+        <p>Prioritize high-frequency behavior as an indicator of spend potential.</p>
+        <p>Replace broad marketing with customer-value-based targeting.</p>
       </div>
     </section>
-
-    <section class="card tech-section">
-      <h2>Tools Used</h2>
-      <div class="tech-stack">
-        <span>Python</span>
-        <span>Pandas</span>
-        <span>NumPy</span>
-        <span>Matplotlib</span>
-        <span>Seaborn</span>
-        <span>Scikit-learn</span>
-        <span>Jupyter Notebook</span>
-      </div>
-    </section>
-
-    <section class="card final-cta">
-      <h2>Project Repository</h2>
-      <p>
-        Explore the notebook, visuals, and full project files on GitHub.
-      </p>
-      <a href="https://github.com/bindhusaahithi/Customer-Segmentation-Customer-Lifetime-Value-Prediction" class="btn primary" target="_blank">
-        Open GitHub Repository
-      </a>
-    </section>
-
   </main>
 
+  <footer class="footer">
+    <p>Built with Python, Pandas, Seaborn, Scikit-learn, and Jupyter Notebook.</p>
+    <a href="#top">Back to top</a>
+  </footer>
 </body>
 </html>
