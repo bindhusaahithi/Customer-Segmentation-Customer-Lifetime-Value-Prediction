@@ -13,6 +13,9 @@ A machine learning model is also trained to estimate customer spending behavior 
 **Online Retail Dataset (UCI Machine Learning Repository)**
 The dataset contains transactions from a UK-based online retail store between 2010 and 2011.
 
+Dataset download link:
+https://archive.ics.uci.edu/ml/machine-learning-databases/00352/Online%20Retail.xlsx
+
 Key columns include:
 
 * `InvoiceNo` – Transaction ID

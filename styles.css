@@ -376,6 +376,14 @@ h3 {
   background: rgba(0, 0, 0, 0.16);
 }
 
+.mini-facts a {
+  color: var(--gold);
+  font-weight: 900;
+  text-decoration: underline;
+  text-decoration-color: rgba(239, 199, 94, 0.45);
+  text-underline-offset: 4px;
+}
+
 .proof-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
