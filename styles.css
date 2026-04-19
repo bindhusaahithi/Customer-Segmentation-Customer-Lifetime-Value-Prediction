@@ -126,8 +126,7 @@ img {
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.24fr) minmax(320px, 0.76fr);
-  column-gap: clamp(48px, 8vw, 132px);
+  grid-template-columns: 1fr;
   row-gap: 34px;
   align-items: start;
   min-height: 0 !important;
@@ -225,9 +224,9 @@ h3 {
 
 .hero-panel {
   overflow: hidden;
-  width: min(100%, 460px);
-  justify-self: end;
-  margin-top: 36px;
+  width: min(100%, 820px);
+  justify-self: start;
+  margin-top: 0;
   padding: 18px;
   border: 1px solid var(--line);
   border-radius: 34px;
