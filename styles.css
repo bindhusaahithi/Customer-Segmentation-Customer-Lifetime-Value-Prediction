@@ -88,33 +88,16 @@ img {
 .nav {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 24px;
-  width: min(1240px, 100%);
+  width: max-content;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 12px 14px;
+  padding: 12px 24px;
   border: 1px solid var(--line);
   border-radius: 999px;
   background: rgba(17, 20, 15, 0.72);
   box-shadow: 0 14px 42px rgba(0, 0, 0, 0.24);
-}
-
-.brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-}
-
-.brand-mark {
-  display: inline-grid;
-  width: 38px;
-  height: 38px;
-  place-items: center;
-  border-radius: 50%;
-  color: #11140f;
-  background: linear-gradient(135deg, var(--gold), var(--mint));
 }
 
 .nav-links {
@@ -146,8 +129,8 @@ img {
   grid-template-columns: minmax(0, 1.02fr) minmax(360px, 0.88fr);
   gap: clamp(32px, 5vw, 80px);
   align-items: center;
-  min-height: calc(100vh - 88px);
-  padding: clamp(46px, 7vw, 90px) 0 90px;
+  min-height: auto;
+  padding: clamp(46px, 6vw, 76px) 0 clamp(64px, 8vw, 104px);
 }
 
 .eyebrow {
@@ -226,6 +209,12 @@ h3 {
   color: #11140f;
   background: linear-gradient(135deg, var(--gold), #fff1a3);
   box-shadow: 0 20px 52px rgba(239, 199, 94, 0.2);
+}
+
+.button-secondary {
+  color: #10130f;
+  background: linear-gradient(135deg, var(--mint), #d9f5c8);
+  box-shadow: 0 20px 52px rgba(159, 210, 172, 0.16);
 }
 
 .button-ghost {
@@ -589,11 +578,14 @@ figcaption {
   .nav {
     align-items: flex-start;
     border-radius: 28px;
-    flex-direction: column;
+    width: 100%;
+    justify-content: center;
   }
 
   .nav-links {
+    justify-content: center;
     flex-wrap: wrap;
+    width: 100%;
   }
 
   .hero {
