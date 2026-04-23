@@ -224,10 +224,10 @@ h3 {
 }
 
 .button-primary {
-  color: #fff5f1;
-  border: 1px solid rgba(255, 72, 72, 0.5);
-  background: linear-gradient(135deg, #ff2b2b, #b50712);
-  box-shadow: 0 16px 40px rgba(181, 7, 18, 0.38);
+  color: #0f1711;
+  border: 1px solid rgba(193, 232, 181, 0.34);
+  background: linear-gradient(135deg, #d7ef9b, #9fd2ac);
+  box-shadow: 0 16px 40px rgba(159, 210, 172, 0.22);
 }
 
 .button-dark {
