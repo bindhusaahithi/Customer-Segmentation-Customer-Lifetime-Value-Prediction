@@ -9,6 +9,131 @@ st.set_page_config(
     layout="centered"
 )
 
+# ── Custom CSS ────────────────────────────────────────────────
+st.markdown("""
+<style>
+    /* Hide default streamlit header */
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+
+    /* Hero banner */
+    .hero-banner {
+        background: linear-gradient(135deg, #6C5CE7 0%, #0984E3 50%, #00B894 100%);
+        padding: 40px 30px;
+        border-radius: 16px;
+        margin-bottom: 24px;
+        text-align: center;
+    }
+    .hero-title {
+        color: white;
+        font-size: 2.4em;
+        font-weight: 800;
+        margin: 0;
+        letter-spacing: -0.5px;
+    }
+    .hero-subtitle {
+        color: rgba(255,255,255,0.85);
+        font-size: 1.1em;
+        margin-top: 8px;
+    }
+    .hero-links a {
+        color: rgba(255,255,255,0.9);
+        text-decoration: none;
+        margin: 0 10px;
+        font-size: 0.95em;
+        border-bottom: 1px solid rgba(255,255,255,0.4);
+    }
+
+    /* Stats bar */
+    .stats-bar {
+        display: flex;
+        justify-content: space-around;
+        background: #1a1a2e;
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 24px;
+        border: 1px solid #2d2d44;
+    }
+    .stat-item {
+        text-align: center;
+    }
+    .stat-number {
+        font-size: 1.8em;
+        font-weight: 800;
+        color: #6C5CE7;
+        display: block;
+    }
+    .stat-label {
+        font-size: 0.8em;
+        color: #888;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    /* Sample buttons */
+    .sample-label {
+        font-size: 1.1em;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #ddd;
+    }
+
+    /* Segment result card */
+    .result-card {
+        border-radius: 14px;
+        padding: 24px;
+        margin: 16px 0;
+    }
+    .result-title {
+        font-size: 1.8em;
+        font-weight: 800;
+        margin: 0;
+    }
+    .result-desc {
+        color: #aaa;
+        margin-top: 8px;
+        font-size: 1em;
+    }
+
+    /* Section headers */
+    .section-header {
+        font-size: 1.2em;
+        font-weight: 700;
+        color: #ddd;
+        margin: 24px 0 12px 0;
+        padding-bottom: 6px;
+        border-bottom: 2px solid #2d2d44;
+    }
+
+    /* Predict button */
+    .stButton > button {
+        background: linear-gradient(135deg, #6C5CE7, #0984E3) !important;
+        color: white !important;
+        border: none !important;
+        border-radius: 10px !important;
+        font-size: 1.1em !important;
+        font-weight: 600 !important;
+        padding: 14px !important;
+        transition: opacity 0.2s !important;
+    }
+    .stButton > button:hover {
+        opacity: 0.9 !important;
+    }
+
+    /* Footer */
+    .footer {
+        text-align: center;
+        color: #666;
+        font-size: 0.85em;
+        padding: 20px 0 10px 0;
+    }
+    .footer a {
+        color: #6C5CE7;
+        text-decoration: none;
+    }
+</style>
+""", unsafe_allow_html=True)
+
 # ── Load models ───────────────────────────────────────────────
 @st.cache_resource
 def load_models():
@@ -22,8 +147,8 @@ def load_models():
 
 kmeans, scaler, rf_model = load_models()
 
-# ── Segment labels ────────────────────────────────────────────
-SEGMENT_LABELS = {
+# ── Segment config ────────────────────────────────────────────
+SEGMENTS = {
     0: ("💎 High Value Customer",     "#6C5CE7", "Purchases frequently and spends a lot. Top priority for retention."),
     1: ("😴 At-Risk Customer",        "#E17055", "Has not purchased recently. Needs re-engagement campaigns."),
     2: ("🌱 New / Potential Customer", "#00B894", "Low frequency but shows promise. Nurture with targeted offers."),
@@ -37,15 +162,41 @@ RECOMMENDATIONS = {
     3: ["📦 Upsell complementary products", "🔔 Set up restock alerts", "📊 Share personalized recommendations"],
 }
 
-# ── Header ────────────────────────────────────────────────────
-st.title("🎯 Customer Segmentation App")
-st.markdown("#### Predict which customer segment a customer belongs to using RFM Analysis")
-st.markdown(
-    "Built by **[Bindhu Saahithi](https://github.com/bindhusaahithi)** · "
-    "K-Means Clustering + Random Forest · "
-    "[View on GitHub](https://github.com/bindhusaahithi/Customer-Segmentation-Customer-Lifetime-Value-Prediction)"
-)
-st.markdown("---")
+# ── Hero Banner ───────────────────────────────────────────────
+st.markdown("""
+<div class="hero-banner">
+    <p class="hero-title">🎯 Customer Segmentation App</p>
+    <p class="hero-subtitle">Predict customer segments using RFM Analysis · K-Means + Random Forest</p>
+    <div class="hero-links" style="margin-top:14px;">
+        <a href="https://github.com/bindhusaahithi" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/bindhu-saahithi-naralashetty-yogendranath/" target="_blank">LinkedIn</a>
+        <a href="https://www.kaggle.com/bindhusaahithi" target="_blank">Kaggle</a>
+        <a href="https://github.com/bindhusaahithi/Customer-Segmentation-Customer-Lifetime-Value-Prediction" target="_blank">View Code</a>
+    </div>
+</div>
+""", unsafe_allow_html=True)
+
+# ── Stats Bar ─────────────────────────────────────────────────
+st.markdown("""
+<div class="stats-bar">
+    <div class="stat-item">
+        <span class="stat-number">500K+</span>
+        <span class="stat-label">Transactions</span>
+    </div>
+    <div class="stat-item">
+        <span class="stat-number">4,338</span>
+        <span class="stat-label">Customers</span>
+    </div>
+    <div class="stat-item">
+        <span class="stat-number">4</span>
+        <span class="stat-label">Segments</span>
+    </div>
+    <div class="stat-item">
+        <span class="stat-number">0.45</span>
+        <span class="stat-label">R² Score</span>
+    </div>
+</div>
+""", unsafe_allow_html=True)
 
 # ── About section ─────────────────────────────────────────────
 with st.expander("ℹ️ What is RFM Analysis?"):
@@ -58,139 +209,97 @@ with st.expander("ℹ️ What is RFM Analysis?"):
     This app uses **K-Means Clustering** to segment customers into 4 groups
     and **Random Forest** to predict their future spend.
 
-    📊 Built with the Online Retail dataset (UK-based e-commerce, 500K+ transactions)  
-    🔗 [GitHub](https://github.com/bindhusaahithi) | [LinkedIn](https://www.linkedin.com/in/bindhu-saahithi-naralashetty-yogendranath/) | [Kaggle](https://www.kaggle.com/bindhusaahithi)
+    📊 Built with the Online Retail dataset (UK-based e-commerce, 500K+ transactions)
     """)
 
-# ── Sample data buttons ───────────────────────────────────────
-st.markdown("### 🎲 Try a Sample Customer")
+# ── Sample buttons ────────────────────────────────────────────
+st.markdown('<p class="section-header">🎲 Try a Sample Customer</p>', unsafe_allow_html=True)
+
 col_s1, col_s2, col_s3, col_s4 = st.columns(4)
 
-sample_recency   = st.session_state.get("recency", 30)
-sample_frequency = st.session_state.get("frequency", 10)
-sample_monetary  = st.session_state.get("monetary", 500.0)
-
 with col_s1:
-    if st.button("💎 VIP"):
-        st.session_state["recency"]   = 5
-        st.session_state["frequency"] = 80
-        st.session_state["monetary"]  = 8000.0
+    if st.button("💎 VIP", use_container_width=True):
+        st.session_state.update({"recency": 5, "frequency": 80, "monetary": 8000.0})
         st.rerun()
-
 with col_s2:
-    if st.button("😴 At-Risk"):
-        st.session_state["recency"]   = 300
-        st.session_state["frequency"] = 3
-        st.session_state["monetary"]  = 200.0
+    if st.button("😴 At-Risk", use_container_width=True):
+        st.session_state.update({"recency": 300, "frequency": 3, "monetary": 200.0})
         st.rerun()
-
 with col_s3:
-    if st.button("🌱 New"):
-        st.session_state["recency"]   = 20
-        st.session_state["frequency"] = 2
-        st.session_state["monetary"]  = 150.0
+    if st.button("🌱 New", use_container_width=True):
+        st.session_state.update({"recency": 20, "frequency": 2, "monetary": 150.0})
         st.rerun()
-
 with col_s4:
-    if st.button("📦 Regular"):
-        st.session_state["recency"]   = 45
-        st.session_state["frequency"] = 15
-        st.session_state["monetary"]  = 900.0
+    if st.button("📦 Regular", use_container_width=True):
+        st.session_state.update({"recency": 45, "frequency": 15, "monetary": 900.0})
         st.rerun()
 
-st.markdown("---")
-
-# ── Input form ────────────────────────────────────────────────
-st.markdown("### 📋 Enter Customer Details")
+# ── Input controls ────────────────────────────────────────────
+st.markdown('<p class="section-header">📋 Enter Customer Details</p>', unsafe_allow_html=True)
 
 col1, col2, col3 = st.columns(3)
 
 with col1:
     recency = st.slider(
-        "📅 Recency (days since last purchase)",
+        "📅 Recency (days)",
         min_value=1, max_value=365,
         value=st.session_state.get("recency", 30),
-        help="Lower = more recent purchase"
+        help="Days since last purchase. Lower = more recent."
     )
-
 with col2:
     frequency = st.slider(
-        "🔁 Frequency (number of purchases)",
+        "🔁 Frequency (purchases)",
         min_value=1, max_value=200,
         value=st.session_state.get("frequency", 10),
-        help="Higher = buys more often"
+        help="Total number of purchases made."
     )
-
 with col3:
     monetary = st.number_input(
-        "💰 Monetary (total spend £)",
+        "💰 Monetary (£ spend)",
         min_value=0.0, max_value=50000.0,
         value=float(st.session_state.get("monetary", 500.0)),
         step=50.0,
-        help="Total amount spent by the customer"
+        help="Total amount spent by the customer."
     )
 
-st.markdown("---")
+st.markdown("<br>", unsafe_allow_html=True)
 
-# ── Predict button ────────────────────────────────────────────
+# ── Predict ───────────────────────────────────────────────────
 if st.button("🔍 Predict Customer Segment", use_container_width=True):
 
-    # Prepare inputs
     input_data   = np.array([[recency, frequency, monetary]])
     input_scaled = scaler.transform(input_data)
     input_rf     = np.array([[recency, frequency]])
 
-    # Predictions
     cluster         = kmeans.predict(input_scaled)[0]
     predicted_spend = rf_model.predict(input_rf)[0]
 
-    label, color, description = SEGMENT_LABELS.get(
-        cluster, ("Unknown", "#636e72", "")
-    )
+    label, color, description = SEGMENTS.get(cluster, ("Unknown", "#636e72", ""))
 
-    # ── Result card ───────────────────────────────────────────
-    st.markdown("### 📊 Prediction Results")
-    st.markdown(
-        f"""
-        <div style="
-            background-color:{color}22;
-            border-left:5px solid {color};
-            padding:20px;
-            border-radius:10px;
-            margin:10px 0;
-        ">
-            <h2 style="color:{color};margin:0;">{label}</h2>
-            <p style="color:#636e72;margin-top:8px;">{description}</p>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+    st.markdown('<p class="section-header">📊 Prediction Results</p>', unsafe_allow_html=True)
 
-    # Metrics
+    st.markdown(f"""
+    <div class="result-card" style="background:{color}18; border-left:5px solid {color};">
+        <p class="result-title" style="color:{color};">{label}</p>
+        <p class="result-desc">{description}</p>
+    </div>
+    """, unsafe_allow_html=True)
+
     c1, c2, c3 = st.columns(3)
     c1.metric("Cluster",         f"#{cluster}")
     c2.metric("Predicted Spend", f"£{predicted_spend:,.0f}")
-    c3.metric("RFM Input",       f"R:{recency} F:{frequency}")
+    c3.metric("Recency / Freq",  f"{recency}d / {frequency}x")
 
-    # Recommendations
-    st.markdown("### 💡 Recommended Actions")
+    st.markdown('<p class="section-header">💡 Recommended Actions</p>', unsafe_allow_html=True)
     for rec in RECOMMENDATIONS.get(cluster, []):
         st.markdown(f"- {rec}")
 
 # ── Footer ────────────────────────────────────────────────────
-st.markdown("---")
-st.markdown(
-    """
-    <div style="text-align:center;color:#636e72;font-size:13px;">
-        Built by
-        <a href="https://github.com/bindhusaahithi" target="_blank">Bindhu Saahithi</a>
-        ·
-        <a href="https://www.linkedin.com/in/bindhu-saahithi-naralashetty-yogendranath/" target="_blank">LinkedIn</a>
-        ·
-        <a href="https://www.kaggle.com/bindhusaahithi" target="_blank">Kaggle</a>
-        ·
-        <a href="https://github.com/bindhusaahithi/Customer-Segmentation-Customer-Lifetime-Value-Prediction" target="_blank">View on GitHub</a>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+st.markdown("""
+<div class="footer">
+    Built by <a href="https://github.com/bindhusaahithi">Bindhu Saahithi</a> ·
+    <a href="https://www.linkedin.com/in/bindhu-saahithi-naralashetty-yogendranath/">LinkedIn</a> ·
+    <a href="https://www.kaggle.com/bindhusaahithi">Kaggle</a> ·
+    <a href="https://github.com/bindhusaahithi/Customer-Segmentation-Customer-Lifetime-Value-Prediction">View on GitHub</a>
+</div>
+""", unsafe_allow_html=True)
