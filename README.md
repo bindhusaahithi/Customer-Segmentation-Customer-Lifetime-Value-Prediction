@@ -1,156 +1,108 @@
-# Customer Segmentation & Spend Analysis
+# 🎯 Customer Segmentation & CLV Prediction
 
-## Project Overview
-
-This project performs customer segmentation on an e-commerce transaction dataset using RFM (Recency, Frequency, Monetary) analysis and K-Means clustering. The goal is to identify distinct groups of customers based on purchasing behavior and explore patterns in customer spending.
-
-A machine learning model is also trained to estimate customer spending behavior using Recency and Frequency features.
-
----
-
-## Dataset
-
-**Online Retail Dataset (UCI Machine Learning Repository)**
-The dataset contains transactions from a UK-based online retail store between 2010 and 2011.
-
-Dataset download link:
-https://archive.ics.uci.edu/ml/machine-learning-databases/00352/Online%20Retail.xlsx
-
-Key columns include:
-
-* `InvoiceNo` – Transaction ID
-* `StockCode` – Product code
-* `Description` – Product description
-* `Quantity` – Number of items purchased
-* `InvoiceDate` – Transaction date
-* `UnitPrice` – Price per unit
-* `CustomerID` – Unique customer identifier
-* `Country` – Customer location
+[![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-Streamlit-FF4B4B?style=for-the-badge)](https://customer-segmentation-customer-lifetime-value-prediction.streamlit.app)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/bindhusaahithi)
+[![Kaggle](https://img.shields.io/badge/Kaggle-20BEFF?style=for-the-badge&logo=kaggle&logoColor=white)](https://www.kaggle.com/bindhusaahithi)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/bindhu-saahithi-naralashetty-yogendranath/)
 
 ---
 
-## Project Workflow
+## 🚀 Live Demo
 
-1. **Data Cleaning**
+**👉 [Try the app here](https://customer-segmentation-customer-lifetime-value-prediction.streamlit.app)**
 
-   * Removed missing `CustomerID`
-   * Removed cancelled orders
-   * Removed negative quantities and prices
-
-2. **Feature Engineering**
-
-   * Created `TotalPrice`
-   * Generated RFM metrics (Recency, Frequency, Monetary)
-
-3. **Outlier Handling**
-
-   * Removed extreme monetary outliers (top 1%)
-
-4. **Customer Segmentation**
-
-   * Applied K-Means clustering
-   * Used Elbow Method to guide cluster selection
-
-5. **Customer Spend Modeling**
-
-   * Random Forest model to estimate customer spending behavior
+Enter customer RFM values and instantly see which segment they belong to with business recommendations!
 
 ---
 
-## Visualizations
+## 📌 Project Overview
 
-The project generates several visualizations saved in the `visuals/` folder.
+Segmented customers using **RFM Analysis** (Recency, Frequency, Monetary) and predicted **Customer Lifetime Value** to drive smarter marketing and retention strategies.
 
-### Monthly Revenue Trend
-![Monthly Revenue](visuals/monthly_revenue.png)
-
-### Top Countries by Revenue
-![Top Countries](visuals/top_countries.png)
-
-### Elbow Method for Clustering
-![Elbow Method](visuals/elbow_method.png)
-
-### Customer Segments Scatter Plot
-![Customer Segments](visuals/customer_segments.png)
-
-### Feature Importance Chart
-![Feature Importance](visuals/feature_importance.png)
----
-
-## Key Insights
-
-* A small group of customers contributes a large share of revenue.
-* Customer segments differ significantly in purchase frequency and total spend.
-* Frequency is the strongest predictor of customer spending behavior.
+Built on a real-world UK e-commerce dataset with **500,000+ transactions**.
 
 ---
 
-## Project Structure
+## 🎯 Key Results
+
+- Segmented **4,338 unique customers** into 4 distinct groups
+- Achieved **R² score of 0.45** on CLV prediction
+- Identified top revenue-generating countries and customer behavior patterns
+- Built and deployed a live interactive web app
+
+---
+
+## 🛠️ Tech Stack
+
+`Python` `Pandas` `NumPy` `Scikit-learn` `Matplotlib` `Seaborn` `Streamlit`
+
+**Models Used:**
+- K-Means Clustering (customer segmentation)
+- Random Forest Regressor (CLV prediction)
+- StandardScaler (feature preprocessing)
+
+---
+
+## 📊 Customer Segments
+
+| Segment | Description | Strategy |
+|---|---|---|
+| 💎 High Value | Frequent buyers, high spend | Loyalty rewards, VIP treatment |
+| 😴 At-Risk | Inactive recently | Win-back campaigns, discounts |
+| 🌱 New/Potential | Low frequency, promising | Welcome series, first purchase offer |
+| 📦 Regular | Moderate activity | Upsell, restock alerts |
+
+---
+
+## 📁 Project Structure
 
 ```
-Customer-Segmentation-CLV
-│
-├── data
-│   └── Online Retail.xlsx
-│
-├── notebooks
-│   └── customer_segmentation.ipynb
-│
-├── visuals
-│   ├── monthly_revenue.png
-│   ├── top_countries.png
-│   ├── elbow_method.png
-│   ├── customer_segments.png
-│   └── feature_importance.png
-│
+Customer-Segmentation/
+├── app.py                    ← Streamlit web app
+├── kmeans_model.pkl          ← Saved K-Means model
+├── scaler.pkl                ← Saved StandardScaler
+├── rf_model.pkl              ← Saved Random Forest model
 ├── requirements.txt
-└── README.md
+├── data/
+│   └── Online Retail.xlsx    ← Dataset
+├── notebooks/
+│   └── customer_segmentation.ipynb
+└── visuals/                  ← Generated charts
 ```
 
 ---
 
-## How to Run
+## 🚀 Run Locally
 
-1. Clone the repository
-2. Install dependencies
+```bash
+# Clone the repo
+git clone https://github.com/bindhusaahithi/Customer-Segmentation-Customer-Lifetime-Value-Prediction
 
-```
+# Install dependencies
 pip install -r requirements.txt
-```
 
-3. Open the notebook
-
-```
-jupyter notebook notebooks/customer_segmentation.ipynb
+# Run the app
+streamlit run app.py
 ```
 
 ---
 
-## GitHub Pages Portfolio
+## 📈 Sample Visualizations
 
-This repository includes a static portfolio page for GitHub Pages:
-
-```
-index.html
-styles.css
-```
-
-To publish it, go to the repository settings on GitHub, open **Pages**, and set the source to the `main` branch with the root folder.
+- Monthly Revenue Trend
+- Top Countries by Revenue
+- Elbow Method for Optimal Clusters
+- Customer Segments Scatter Plot
+- Feature Importance Analysis
 
 ---
 
-## Tools Used
+## 👩‍💻 About
 
-* Python
-* Pandas
-* NumPy
-* Matplotlib
-* Seaborn
-* Scikit-learn
-* Jupyter Notebook
+Built by **Bindhu Saahithi** — Data Science Graduate Student at UMass Dartmouth
 
----
+🌍 Open to Data Scientist & Analyst roles in **USA & UK**
 
-## Notes
-
-This project estimates **current customer spending behavior** rather than predicting full customer lifetime value (CLV). The analysis is exploratory and focuses on segmentation and spend patterns rather than long-term forecasting.
+[![GitHub](https://img.shields.io/badge/GitHub-bindhusaahithi-181717?style=flat&logo=github)](https://github.com/bindhusaahithi)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Bindhu_Saahithi-0A66C2?style=flat&logo=linkedin)](https://www.linkedin.com/in/bindhu-saahithi-naralashetty-yogendranath/)
+[![Kaggle](https://img.shields.io/badge/Kaggle-bindhusaahithi-20BEFF?style=flat&logo=kaggle)](https://www.kaggle.com/bindhusaahithi)
